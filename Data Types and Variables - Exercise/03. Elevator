@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Elevator {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int fullCourses = 0;
+        int n = Integer.parseInt(sc.nextLine());
+        int p = Integer.parseInt(sc.nextLine());
+        
+        fullCourses = n / p;
+        
+        if (n % p == 0) {
+            System.out.println(fullCourses);
+        } else if (fullCourses - p <= p) {
+            System.out.println(fullCourses + 1);
+        }
+    }
+}
