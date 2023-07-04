@@ -1,0 +1,19 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int First = Integer.parseInt(sc.nextLine());
+        int Second = Integer.parseInt(sc.nextLine());
+        int Third = Integer.parseInt(sc.nextLine());
+        int Fourth = Integer.parseInt(sc.nextLine());
+
+        int result = First + Second;
+        result = result / Third;
+        result = result * Fourth;
+        System.out.println(result);
+    }
+}
