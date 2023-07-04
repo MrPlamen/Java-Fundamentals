@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int capacity = 255;
+
+        int numOfLines = Integer.parseInt(sc.nextLine());
+        int water;
+
+        for (int i = 0; i < numOfLines; i++) {
+            water = Integer.parseInt(sc.nextLine());
+            if ((capacity - water) < 0) {
+                System.out.println("Insufficient capacity!");
+            } else {
+                capacity -= water;
+            }
+        }
+
+        System.out.println(255 - capacity);
+    }
+}
