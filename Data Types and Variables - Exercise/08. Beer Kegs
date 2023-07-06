@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class P08BeerKegs {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = Integer.parseInt(sc.nextLine());
+        double volume = 0;
+        double tempVolume = 0;
+        String model = "";
+        String tempModel = "";
+
+        for (int i = 1; i <= n; i++) {
+            model = sc.nextLine();
+            double radius = Double.parseDouble(sc.nextLine());
+            int height = Integer.parseInt(sc.nextLine());
+            volume = Math.PI * (Math.pow(radius, 2)) * height;
+            if (volume > tempVolume) {
+                tempVolume = volume;
+                tempModel = model;
+            }
+        }
+        System.out.println(tempModel);
+    }
+}
