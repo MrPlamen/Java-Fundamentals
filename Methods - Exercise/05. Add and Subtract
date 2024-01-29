@@ -1,0 +1,26 @@
+package MethodsExercise;
+
+import java.util.Scanner;
+
+public class P05AddAndSubtract {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int firstInput = Integer.parseInt(sc.nextLine());
+        int secondInput = Integer.parseInt(sc.nextLine());
+        int thirdInput = Integer.parseInt(sc.nextLine());
+
+        sum(firstInput, secondInput);
+        substract(sum(firstInput, secondInput), thirdInput);
+
+        System.out.println(substract(sum(firstInput, secondInput), thirdInput));
+    }
+
+    private static int sum(int firstInput, int secondInput) {
+        int sum = firstInput + secondInput;
+        return sum;
+    }
+    private static int substract (int sum, int third) {
+        int finalSum = sum - third;
+        return finalSum;
+    }
+}
