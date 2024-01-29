@@ -1,0 +1,25 @@
+package MethodsExercise;
+
+import java.util.Scanner;
+
+public class P03CharactersInRange {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char firstChar = sc.next().charAt(0);
+        char secondChar = sc.next().charAt(0);
+
+        printASCIIChars(firstChar, secondChar);
+    }
+
+    private static void printASCIIChars(char one, char two) {
+        if (one < two) {
+            for (int i = one + 1; i < two; i++) {
+                System.out.print((char) i + " ");
+            }
+        } else {
+            for (int i = two + 1; i < one; i++) {
+                System.out.print((char) i + " ");
+            }
+        }
+    }
+}
