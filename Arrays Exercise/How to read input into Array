@@ -1,0 +1,27 @@
+//If we want to read an array of integers:
+
+int [] array = Arrays.stream(sc.nextLine().split(" ")).mapToInt(e -> Integer.parseInt(e)).toArray();
+
+
+
+//If we want to read a String array:
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        // Read the entire line as a string
+        String inputLine = sc.nextLine();
+
+        // Split the input line into individual elements based on space delimiter
+        String[] elements = inputLine.split(" ");
+
+        // Print the elements to verify
+        for (String element : elements) {
+            System.out.println(element);
+        }
+    }
+}
