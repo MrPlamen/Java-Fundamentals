@@ -1,0 +1,17 @@
+scanner.nextInt()
+DOES NOT read the newline character, 
+so if the input looks like this
+4
+1 5
+9 10
+31 81
+41 20
+and we read the 4 using nextInt()
+the next line will appear blank, because it will finally read the missed newline
+
+If we insist on using nextInt(), then we need to read the newline separately:
+
+int numberOfLines = sc.nextInt();
+sc.nextLine();
+
+and then proceed to read the row with 1 5
