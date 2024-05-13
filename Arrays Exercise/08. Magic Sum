@@ -1,0 +1,26 @@
+//Write a program, which prints all UNIQUE pairs in an array of integers whose sum is equal to a given number
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int[] array = Arrays.stream(sc.nextLine().split(" ")).mapToInt(e -> Integer.parseInt(e)).toArray();
+        int magicNumber = Integer.parseInt(sc.nextLine());
+
+        for (int i = 0; i < array.length; i++) {
+            int currentNumber = array[i];
+            int currentPossibleMatch = 0;
+
+            for (int j = i + 1; j < array.length; j++) {
+                currentPossibleMatch = array[j];
+                if (currentNumber + currentPossibleMatch == magicNumber) {
+                    System.out.printf("%d %d\n", currentNumber, currentPossibleMatch);
+                }
+            }
+        }
+    }
+}
