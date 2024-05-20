@@ -18,4 +18,3 @@ public class P01SmallestOfThreeNumbers {
         Arrays.sort(array);
         return array[0];
     }
-}
