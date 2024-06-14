@@ -1,0 +1,23 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String values = sc.nextLine();    //2 8 30 -12 6 243 5
+
+        List<String> items = Arrays.stream(values.split(" ")).toList();
+
+        List<Integer> itemsToNumbers = new ArrayList<>();
+
+        for (int i = 0; i < items.size(); i++) {
+            itemsToNumbers.add(Integer.parseInt(items.get(i)));
+        }
+
+        for (int element: itemsToNumbers) {
+            System.out.print(element + ",");
+        }
+    }
+}
+
