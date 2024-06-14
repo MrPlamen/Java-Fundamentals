@@ -1,0 +1,10 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<String> list = new ArrayList<>(Arrays.asList("one","two","three","four"));
+
+        System.out.println(String.join(",", list));
+    }
+}
