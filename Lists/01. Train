@@ -1,0 +1,42 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        List<Integer> train = Arrays.stream(sc.nextLine().split(" "))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        int maxWagonCapacity = Integer.parseInt(sc.nextLine());
+
+        String command = sc.nextLine();
+
+        while (!command.equals("end")) {
+            List<String> commandsLines = new ArrayList<>(Arrays.stream(command.split(" "))
+                    .toList());
+            
+            if (commandsLines.get(0).equals("Add")) {
+                train.add(Integer.parseInt(commandsLines.get(1)));
+            } else {
+                int passengersToFit = Integer.parseInt(commandsLines.get(0));
+                
+                for (int i = 0; i < train.size(); i++) {
+                    int passengersInWagon = train.get(i);
+                    if ((passengersInWagon + passengersToFit) <= maxWagonCapacity) {
+                        train.set(i, (passengersInWagon + passengersToFit));
+                        passengersToFit = 0;
+                    }
+                }
+            }
+            command = sc.nextLine();
+            commandsLines.clear();
+        }
+
+        for (int wagon : train) {
+            System.out.print(wagon + " ");
+        }
+    }
+}
