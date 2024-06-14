@@ -1,0 +1,14 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String values = sc.nextLine();    //2 8 30 -12 6 243 5
+
+        List<Integer> items = Arrays.stream(values.split(" "))
+                .map(Integer::parseInt).collect(Collectors.toList());
+    }
+}
+
