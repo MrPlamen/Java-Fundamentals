@@ -1,0 +1,43 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String inputString = sc.nextLine();
+
+        List<String> listOfNumbers = Arrays.stream(inputString.split(" "))
+                .collect(Collectors.toList());
+
+        String inputCommand = sc.nextLine();
+        String element = "";
+        int position = 0;
+
+        while (!inputCommand.equals("end")) {
+
+            List<String> commandsList = Arrays.stream(inputCommand.split(" ")).toList();
+
+            if (commandsList.get(0).equals("Delete")) {
+                element = commandsList.get(1);
+                for (int i=0; i< listOfNumbers.size(); i++) {
+                    if (listOfNumbers.get(i).equals(element)) {
+                        listOfNumbers.remove(listOfNumbers.get(i));
+                        i-=1;                                              // ! IT'S VERY IMPORTANT TO UPDATE THE LOOP ITERATOR ACCORDING TO THE NEW LIST SIZE
+                    }
+                }
+            } else if (commandsList.get(0).equals("Insert")) {
+                element = commandsList.get(1);
+                position = Integer.parseInt(commandsList.get(2));
+                listOfNumbers.add(position, element);
+            }
+
+            inputCommand = sc.nextLine();
+        }
+
+        for (String item: listOfNumbers) {
+            System.out.print(item + " ");
+        }
+    }
+}
+
