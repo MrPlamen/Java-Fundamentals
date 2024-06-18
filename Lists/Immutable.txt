@@ -1,0 +1,19 @@
+When you use the toList() method from the Stream API, it produces an immutable list. This means that the list cannot be modified after it is created. 
+Operations like add, remove, and clear are not allowed on an immutable list and will throw an UnsupportedOperationException.
+
+List<String> commandsLines = Arrays.stream(sc.nextLine().split(" "))
+                                   .toList();
+
+commandsLines.clear(); // This will throw an UnsupportedOperationException
+
+
+The Recommended Approach
+
+IntelliJ suggests creating a mutable list by wrapping the immutable list in an ArrayList:
+
+List<String> commandsLines = new ArrayList<>(Arrays.stream(sc.nextLine().split(" "))
+                                                   .toList());
+
+Why This Works
+ArrayList is a commonly used implementation of the List interface that supports all optional list operations, including clear, add, and remove. 
+By creating an ArrayList from the immutable list, you ensure that you can modify the list as needed.
