@@ -1,0 +1,39 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int numOfCommands = Integer.parseInt(sc.nextLine());
+        List<String> guestsList = new ArrayList<>();
+
+        for (int i = 0; i < numOfCommands; i++) {
+            String command = sc.nextLine();
+
+            List<String> commandToList = new ArrayList<>(Arrays.asList(command.split(" ")));
+            String guest = commandToList.get(0);
+
+            if (commandToList.contains("not")) {
+                if (!guestsList.contains(guest)) {
+                    System.out.println(guest + " is not in the list!");
+                } else {
+                    guestsList.remove(guest);
+                }
+            } else {
+                if (guestsList.contains(guest)) {
+                    System.out.println(guest + " is already in the list!");
+                } else {
+                    guestsList.add(guest);
+                }
+            }
+            command = "";
+        }
+
+        for (String item : guestsList) {
+            System.out.println(item);
+        }
+    }
+}
+
