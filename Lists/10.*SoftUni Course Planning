@@ -1,0 +1,84 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        List<String> scheduleList = Arrays.stream(sc.nextLine().split(", "))
+                .collect(Collectors.toList());
+
+        String command = sc.nextLine();
+
+        while (!command.equals("course start")) {
+            List<String> commandLine = new ArrayList<>(Arrays.asList(command.split(":")));
+
+            String action = commandLine.get(0);
+            String actionElement = commandLine.get(1);
+
+            switch (action) {
+                case "Add":
+                    if (!scheduleList.contains(actionElement)) {
+                        scheduleList.add(actionElement);
+                    }
+                    break;
+
+                case "Insert":
+                    if (!scheduleList.contains(actionElement)) {
+                        int index = Integer.parseInt(commandLine.get(2));
+                        if (index >= 0 && index <= scheduleList.size()) {
+                            scheduleList.add(index, actionElement);
+                        }
+                    }
+                    break;
+
+                case "Remove":
+                    scheduleList.remove(actionElement);
+                    String exercise = actionElement + "-Exercise";
+                    scheduleList.remove(exercise);
+                    break;
+
+                case "Swap":
+                    String lessonOne = commandLine.get(1);
+                    String lessonTwo = commandLine.get(2);
+                    if (scheduleList.contains(lessonOne) && scheduleList.contains(lessonTwo)) {
+                        int indexOfLessonOne = scheduleList.indexOf(lessonOne);
+                        int indexOfLessonTwo = scheduleList.indexOf(lessonTwo);
+                        Collections.swap(scheduleList, indexOfLessonOne, indexOfLessonTwo);      // ! Swap elements of a list
+                        
+                        String exerciseOne = lessonOne + "-Exercise";
+                        String exerciseTwo = lessonTwo + "-Exercise";
+
+                        if (scheduleList.contains(exerciseOne)) {
+                            scheduleList.remove(exerciseOne);
+                            scheduleList.add(indexOfLessonTwo + 1, exerciseOne);
+                        }
+
+                        if (scheduleList.contains(exerciseTwo)) {
+                            scheduleList.remove(exerciseTwo);
+                            scheduleList.add(indexOfLessonOne + 1, exerciseTwo);
+                        }
+                    }
+                    break;
+
+                case "Exercise":
+                    String lesson = commandLine.get(1);
+                    String newExercise = lesson + "-Exercise";
+                    if (!scheduleList.contains(lesson)) {
+                        scheduleList.add(lesson);
+                        scheduleList.add(newExercise);
+                    } else if (!scheduleList.contains(newExercise)) {
+                        int lessonIndex = scheduleList.indexOf(lesson);
+                        scheduleList.add(lessonIndex + 1, newExercise);
+                    }
+                    break;
+            }
+
+            command = sc.nextLine();
+        }
+
+        for (int i = 0; i < scheduleList.size(); i++) {
+            System.out.println((i + 1) + "." + scheduleList.get(i));
+        }
+    }
+}
