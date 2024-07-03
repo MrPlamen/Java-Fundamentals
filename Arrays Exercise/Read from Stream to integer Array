@@ -1,0 +1,3 @@
+        int[] commandArray = Arrays.stream(sc.nextLine().split("\\s+"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
