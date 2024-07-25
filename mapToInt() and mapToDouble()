@@ -6,19 +6,24 @@ int[] firstLine = Arrays.stream(sc.nextLine().split(" "))
 
 
 
-When working with streams in Java, particularly when converting a stream of strings to a stream of integers, the type of mapping method used is crucial. Here's why using .map() instead of .mapToInt() can lead to issues, and a detailed explanation of both methods.
+When working with streams in Java, particularly when converting a stream of strings to a stream of integers, the type of mapping method used is crucial. 
+Here's why using .map() instead of .mapToInt() can lead to issues, and a detailed explanation of both methods.
 
 .map() vs .mapToInt()
+
+
 .map():
 
 Returns: A Stream<R>.
 Usage: It's a generic method used for transforming elements of a stream from one type to another. However, when transforming to primitives, it doesn't return a primitive stream.
 Example: .map(Integer::parseInt) would return a Stream<Integer>.
+
 .mapToInt():
 
 Returns: An IntStream.
 Usage: Specifically used for transforming elements to primitive int values and returning an IntStream.
 Example: .mapToInt(Integer::parseInt) would return an IntStream.
+
 Issue with .map()
 When you use .map(Integer::parseInt), the stream remains as a Stream<Integer>, and calling .toArray() on this stream returns an array of Integer objects (i.e., Integer[]), not int[].
 
