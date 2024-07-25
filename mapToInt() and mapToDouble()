@@ -1,9 +1,12 @@
 Input: 24 42
 
 int[] firstLine = Arrays.stream(sc.nextLine().split(" "))
-                .mapToInt(Integer::parseInt)                          ////////// ! ////////
+                .mapToInt(Integer::parseInt)                          //  primitive int collection => .mapToInt()  !!!
                 .toArray();
 
+List<Integer> ar = Arrays.stream(sc.nextLine().split(" "))          //  Non-primitive Integer collection => .map()   !!!
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
 
 When working with streams in Java, particularly when converting a stream of strings to a stream of integers, the type of mapping method used is crucial. 
