@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int numberOfRows = Integer.parseInt(sc.nextLine());
+        List<List<Integer>> matrix = new ArrayList<>();
+
+        for (int i = 0; i < numberOfRows; i++) {
+            List<Integer> rowList = Arrays.stream(sc.nextLine().split(" "))
+                    .map(Integer::parseInt)
+                    .toList();
+
+            rowList = rowList.subList(1, rowList.size());
+
+            matrix.add(rowList);
+        }
+
+        int numberOfQueries = Integer.parseInt(sc.nextLine());
+
+        for (int i = 0; i < numberOfQueries; i++) {
+            int[] query = Arrays.stream(sc.nextLine().split(" "))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
+            int y = query[0] - 1;
+            int x = query[1] - 1;
+
+            if (matrix.get(y).size() > x) {
+                System.out.println(matrix.get(y).get(x));
+            } else {
+                System.out.println("ERROR!");
+            }
+        }
+    }
+}
